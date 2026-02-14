@@ -6,4 +6,4 @@ All scripts inside .config/waybar/scripts need of permission:
 sudo chmod +x .config/waybar/scripts/*.sh
 ```
 
-<img src="My-Omarchy-apresentation.gif" width="70%" alt="Minha demonstração">
+<img src="My-Omarchy-apresentation.gif" width="100%" alt="Minha demonstração">
