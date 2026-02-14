@@ -6,5 +6,4 @@ All scripts inside .config/waybar/scripts need of permission:
 sudo chmod +x .config/waybar/scripts/*.sh
 ```
 
-<video src="https://github.com/gustavorattmann/my-omarchy/raw/refs/heads/main/My-Omarchy-apresentation.mp4" controls="controls" style="max-width: 70%;" autoplay="autoplay" muted="muted">
-</video>
+<img src="My-Omarchy-apresentation.gif" width="70%" alt="Minha demonstração">
