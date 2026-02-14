@@ -1,0 +1,345 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "height": 26,
+  "modules-left": [
+    "custom/omarchy",
+    "hyprland/workspaces",
+    "custom/cava"
+  ],
+  "modules-center": [
+    "custom/weather",
+    "clock",
+    "custom/update",
+    "custom/voxtype",
+    "custom/screenrecording-indicator",
+    "group/media-player"
+  ],
+  "modules-right": [
+    "group/tray-expander",
+    "hyprland/language",
+    "custom/history",
+    "pulseaudio",
+    "network",
+    "group/cpu-group",
+    "group/gpu-group",
+    "custom/memory",
+    "custom/disk"
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0",
+      "active": "󱓻"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+  "custom/omarchy": {
+    "format": "<span font='omarchy'>\ue900</span>",
+    "on-click": "omarchy-menu",
+    "on-click-right": "xdg-terminal-exec",
+    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
+  },
+  "custom/update": {
+    "format": "",
+    "exec": "omarchy-update-available",
+    "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
+    "tooltip-format": "Omarchy update available",
+    "signal": 7,
+    "interval": 21600
+  },
+
+  "group/cpu-group": {
+    "orientation": "horizontal",
+    "spacing": 0,
+    "modules": [
+        "custom/cpu",
+        "custom/cpu-temp"
+    ]
+  },
+  "group/gpu-group": {
+    "orientation": "horizontal",
+    "spacing": 0,
+    "modules": [
+        "custom/gpu",
+        "custom/gpu-mem",
+        "custom/gpu-temp"
+    ]
+  },
+  "custom/cpu": {
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/cpu-status.sh usage",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "omarchy-launch-or-focus-tui btop",
+    "on-click-right": "alacritty"
+  },
+  "custom/cpu-temp": {
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/cpu-status.sh temp",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "omarchy-launch-or-focus-tui btop",
+    "on-click-right": "alacritty"
+  },
+  "custom/gpu": {
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/gpu-status.sh gpu",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "omarchy-launch-or-focus-tui nvtop"
+  },
+  "custom/gpu-mem": {
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/gpu-status.sh mem",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "omarchy-launch-or-focus-tui nvtop"
+  },
+  "custom/gpu-temp": {
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/gpu-status.sh temp",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "omarchy-launch-or-focus-tui nvtop"
+  },
+  "custom/memory": {
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/mem-status.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "omarchy-launch-or-focus-tui btop",
+    "on-click-right": "alacritty"
+  },
+  "custom/disk": {
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/disk-status.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "omarchy-launch-or-focus-tui btop",
+    "on-click-right": "alacritty"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "   {:L%A %H:%M:%S}",
+    "format-alt": "   {:L%d de %B de %Y}",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "on-scroll": 1,
+        "format": {
+            "months": "<span color='#ffead3'><b>{}</b></span>",
+            "days": "<span color='#ecc6d9'><b>{}</b></span>",
+            "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+            "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+            "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    },
+    "on-click-right": "gnome-calendar",
+  },
+  "network": {
+    "interval": 2,
+    "spacing": 1,
+    "format-ethernet": "<span color='#e30e0e'>󰇚  {bandwidthDownBytes}</span>    <span color='#33c712'>󰕒  {bandwidthUpBytes}</span>",
+    "format-disconnected": "",
+    "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}\nDownloading: ⇣{bandwidthDownBytes}\nUploading: ⇡{bandwidthUpBytes}",
+    "on-click": "nm-connection-editor",
+    "on-click-right": "alacritty --class float-tui -e bandwhich"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "on-click": "omarchy-menu power",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": "",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "omarchy-launch-bluetooth"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "on-click": "omarchy-launch-audio",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", ""]
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": ["custom/expand-icon", "tray"]
+  },
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false,
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+    "on-scroll-left": "",
+    "on-scroll-right": ""
+  },
+  "custom/screenrecording-indicator": {
+    "on-click": "omarchy-cmd-screenrecord",
+    "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
+    "signal": 8,
+    "return-type": "json"
+  },
+  "custom/voxtype": {
+    "exec": "omarchy-voxtype-status",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "idle": "",
+      "recording": "󰍬",
+      "transcribing": "󰔟"
+    },
+    "tooltip": true,
+    "on-click-right": "omarchy-voxtype-config",
+    "on-click": "omarchy-voxtype-model"
+  },
+  "tray": {
+    "icon-size": 12,
+    "spacing": 20
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "🇺🇸 US",
+    "format-pt": "🇧🇷 BR",
+    "format-br": "🇧🇷 BR",
+    "format-portuguese-brazil": "🇧🇷 BR",
+    "keyboard-name": "-------monsgeek-keyboard",
+    "min-width": 40,
+    "on-click": "hyprctl dispatch switchxkblayout all next"
+  },
+  "group/media-player": {
+    "orientation": "horizontal",
+    "modules": [
+        "custom/player-prev",
+        "custom/player-toggle",
+        "custom/player-next",
+        "custom/media"
+    ]
+  },
+  "custom/media": {
+    "format": "{icon}&#160;&#160;&#160;&#160;&#160;{text}",
+    "max-length": 30,
+    "ellipsis": "...",
+    "return-type": "json",
+    "format-icons": {
+        "spotify": "",
+        "Spotify": "",
+        "firefox": "",
+        "mozilla-firefox": "",
+        "chromium": "",
+        "chrome": "",
+        "google-chrome": "",
+        "vlc": "󰕼",
+        "default": ""
+    },
+    "escape": true,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"alt\": \"{{playerName}}\", \"class\": \"{{playerName}}\"}' -F 2>/dev/null",
+    "on-click": "playerctl play-pause"
+  },
+  "custom/player-toggle": {
+    "format": "{icon}",
+    "return-type": "json",
+    "exec": "playerctl -a metadata --format '{\"alt\": \"{{status}}\"}' -F",
+    "format-icons": {
+        "Playing": "󰏤",
+        "Paused": "󰐊"
+    },
+    "on-click": "playerctl play-pause",
+    "tooltip": false,
+    "restart-interval": 1
+  },
+  "custom/player-prev": {
+    "format": "󰒮",
+    "exec": "playerctl -F metadata --format '  ' 2>/dev/null",
+    "on-click": "playerctl previous",
+    "tooltip": false
+  },
+  "custom/player-next": {
+    "format": "󰒭",
+    "exec": "playerctl -F metadata --format '  ' 2>/dev/null",
+    "on-click": "playerctl next",
+    "tooltip": false
+  },
+  "custom/weather": {
+    "exec": "$HOME/.config/waybar/scripts/openweathermap.sh",
+    "return-type": "json",
+    "interval": 1800,
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "xdg-open https://www.climatempo.com.br/previsao-do-tempo/agora/cidade/271/curitiba-pr"
+  },
+  "custom/cava": {
+    "exec": "$HOME/.config/waybar/scripts/cava.sh",
+    "format": "{}",
+    "escape": false,
+    "restart-interval": 5,
+    "on-click-middle": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-left": "playerctl previous"
+  },
+  "custom/history": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/dunst_status.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "dunstctl history-pop",
+    "on-click-right": "dunstctl history-clear",
+    "on-click-middle": "dunstctl close-all",
+    "tooltip": true,
+    "tooltip-format": "Clique para ver histórico"
+  }
+}

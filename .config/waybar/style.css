@@ -1,0 +1,318 @@
+@import "../omarchy/current/theme/waybar.css";
+
+* {
+  background-color: @background;
+  color: @foreground;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'SF Pro Display', 'FiraCode Nerd Font';
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-center {
+  margin-right: 10px;
+}
+
+.modules-right {
+  margin-right: 15px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#battery,
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#pulseaudio,
+#custom-history {
+  min-width: 12px;
+  margin: 0 5px;
+}
+
+#tray {
+  margin-right: 16px;
+}
+
+#bluetooth {
+  margin-right: 17px;
+}
+
+#network {
+  margin-left: 5px;
+}
+
+#network.disconnected {
+  background: #ff5555;
+  color: #ffffff;
+}
+
+#custom-expand-icon {
+  margin-right: 18px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock, #custom-weather {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0 15px;
+  margin: 5px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+  min-width: 12px;
+  margin-left: 5px;
+  font-size: 10px;
+  padding-bottom: 1px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+
+#custom-voxtype {
+  min-width: 12px;
+  margin: 0 0 0 7.5px;
+}
+
+#custom-voxtype.recording {
+  color: #a55555;
+}
+
+#language {
+  min-width: 45px;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+}
+
+window#waybar {
+  font-family: 'SF Pro Display', 'FiraCode Nerd Font';
+  min-height: 0;
+}
+
+#custom-cava {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 900;
+  min-width: 220px;
+  padding: 1px;
+  margin: 4px 5px;
+  transition: all 0.5s ease;
+  text-shadow: none;
+}
+
+.modules-center > widget > box {
+  min-width: 0;
+  margin-right: 20px;
+}
+
+.modules-center > widget > box > * {
+  background: transparent;
+  background-color: transparent;
+}
+
+.modules-center box#media-player,
+box#group-media-player,
+#group-media-player {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 5px;
+}
+
+#group-media-player widget,
+#group-media-player box,
+#group-media-player label {
+  background: transparent;
+  background-color: transparent;
+}
+
+#custom-player-prev, 
+#custom-player-toggle, 
+#custom-player-next, 
+#custom-media {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 8px;
+  margin: 0;
+}
+
+#custom-media {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 50px;
+}
+
+#custom-player-prev,
+#custom-player-toggle,
+#custom-player-next {
+  font-size: 14px;
+}
+
+#custom-player-prev {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+#custom-media.vlc { color: #FF8800; }
+#custom-media.firefox,
+#custom-media.mozilla-firefox {
+  color: #E66000;
+}
+#custom-media.spotify, 
+#custom-media.Spotify { 
+  color: #1DB954; 
+}
+#custom-media.google-chrome,
+#custom-media.chrome,
+#custom-media.chromium {
+  color: #F38BA8;
+}
+
+#cpu-group,
+#gpu-group,
+#custom-memory,
+#custom-disk {
+  color: #161320;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: none;
+}
+
+#cpu-group {
+  background: #96CDFB;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-left: 10px;
+}
+
+#gpu-group {
+  background: #ABE9B3;
+}
+
+#custom-memory {
+  background: #DDB6F2;
+}
+
+#custom-disk {
+  background: #F5C2E7;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#custom-memory, #custom-disk {
+  padding: 0 6px;
+}
+
+#custom-cpu, 
+#custom-cpu-temp,
+#custom-gpu, 
+#custom-gpu-mem, 
+#custom-gpu-temp {
+  padding: 0 6px;
+  background: transparent;
+}
+
+#cpu-group widget,
+#cpu-group box,
+#cpu-group label,
+#gpu-group widget,
+#gpu-group box,
+#gpu-group label,
+#custom-memory widget,
+#custom-memory box,
+#custom-memory label,
+#custom-disk widget,
+#custom-disk box,
+#custom-disk label {
+  background: transparent;
+  background-color: transparent;
+  border-radius: 0;
+  color: #161320;
+}
+
+#custom-cpu.critical, 
+#custom-cpu-temp.critical,
+#custom-gpu.critical,
+#custom-gpu-mem.critical,
+#custom-gpu-temp.critical,
+#custom-memory.critical,
+#custom-disk.critical {
+  padding: 0 6px;
+  background: #ff5555;
+  color: #ffffff;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-cpu.critical {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#custom-disk.critical {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@keyframes blink-cpu { to { background-color: #96CDFB; color: #161320; } }
+#custom-cpu.critical, #custom-cpu-temp.critical {
+  animation-name: blink-cpu;
+}
+
+@keyframes blink-gpu { to { background-color: #ABE9B3; color: #161320; } }
+#custom-gpu.critical, #custom-gpu-mem.critical, #custom-gpu-temp.critical {
+  animation-name: blink-gpu;
+}
+
+@keyframes blink-mem { to { background-color: #DDB6F2; color: #161320; } }
+#custom-memory.critical {
+  animation-name: blink-mem;
+}
+
+@keyframes blink-disk { to { background-color: #F5C2E7; color: #161320; } }
+#custom-disk.critical {
+  animation-name: blink-disk;
+}

@@ -1,0 +1,29 @@
+[global]
+    font = "SF Pro Display 10"
+    background = "#30313B"
+    frame_width = 1
+    frame_color = "#444444"
+    corner_radius = 5
+    gap_size = 8
+    padding = 12
+    horizontal_padding = 12
+    timeout = 10
+    history_length = 20
+
+[urgency_low]
+    timeout = 5
+
+[urgency_normal]
+    timeout = 10
+    frame_color = "#5E81AC"
+
+[urgency_critical]
+    timeout = 0
+    frame_color = "#BF616A"
+
+[spotify]
+    appname = "Spotify"
+    summary = "*"
+    format = "%s %b"
+    history_ignore = yes
+    background = "#1DB954"
